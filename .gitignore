@@ -28,6 +28,11 @@
 # Visual Studio cache directory
 .vs/
 
+# Rider cache directory
+.idea/
+*.iml
+cmake-build-*/
+
 # Gradle cache directory
 .gradle/
 
