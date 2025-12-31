@@ -269,8 +269,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1246573389}
   - component: {fileID: 1246573388}
-  - component: {fileID: 1246573387}
   - component: {fileID: 1246573390}
+  - component: {fileID: 1246573387}
   - component: {fileID: 1246573391}
   m_Layer: 0
   m_Name: Mochi_0
@@ -386,7 +386,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 4
-  _rigidbody: {fileID: 0}
+  _jumpForce: 8
+  _fallMultiplier: 2.5
+  _lowJumpMultiplier: 12
+  _rigidbody: {fileID: 1246573387}
+  IsGrounded: 0
+  GroundCheck: {fileID: 1246573389}
+  CheckRadius: 0.6
+  GroundLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!61 &1246573391
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -526,11 +535,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1695559691}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cefff7a9dbafd144a20e007deb55471, type: 3}
+  m_Script: {fileID: 11500000, guid: 474cfb235f61b374290004f3118aa341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
-  _rigidbody: {fileID: 0}
+  _speed: 4
 --- !u!1 &2051067145
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,7 +550,7 @@ GameObject:
   - component: {fileID: 2051067147}
   - component: {fileID: 2051067146}
   - component: {fileID: 2051067148}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -611,7 +619,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.02, y: -4.73, z: 0}
-  m_LocalScale: {x: 19.795727, y: 1, z: 1}
+  m_LocalScale: {x: 20, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
