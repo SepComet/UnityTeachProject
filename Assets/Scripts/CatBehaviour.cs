@@ -1,12 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CatBehaviour : MonoBehaviour
 {
-    [SerializeField] private Animator _animator;
-    [SerializeField] private PhysicsMovement _movement;
+    private Animator _animator;
+    private PhysicsMovement _movement;
 
     private void Start()
     {
@@ -14,6 +11,9 @@ public class CatBehaviour : MonoBehaviour
         _movement = GetComponent<PhysicsMovement>();
     }
 
+    /// <summary>
+    /// Day5：修改动画机中的 speed 变量来驱动动画
+    /// </summary>
     private void Update()
     {
         _animator.SetFloat("speed", _movement.Speed);

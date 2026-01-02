@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Pool;
 
 public class MeowGenerator : MonoBehaviour
 {
@@ -8,11 +6,14 @@ public class MeowGenerator : MonoBehaviour
     [SerializeField] private GameObject _prefab;
     [SerializeField] private Camera _camera;
     [SerializeField] private Transform _parent;
+    
+    // 对象池
     private GameObject[] _pool;
     private int _currObjIndex = 0;
 
     private void Start()
     {
+        // 对象池初始化
         _pool = new GameObject[10];
         for (int i = 0; i < 10; i++)
         {
@@ -23,6 +24,7 @@ public class MeowGenerator : MonoBehaviour
 
     private void Update()
     {
+        // Day6：鼠标左键生成预制体，将角色的世界坐标转换为屏幕坐标，并显示在屏幕上
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 worldPos = _generateTransform.position;

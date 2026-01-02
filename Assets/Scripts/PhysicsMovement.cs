@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class PhysicsMovement : MonoBehaviour
@@ -27,13 +26,8 @@ public class PhysicsMovement : MonoBehaviour
     {
         Move();
         Jump();
-
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            Debug.Log("鼠标左键按下");
-        }
-
+        
+        // 调整角色方向，根据速度进行调整
         if (_rigidbody.velocity.x < -0.1f) _direction = Direction.Left;
         else if (_rigidbody.velocity.x > 0.1f) _direction = Direction.Right;
 
@@ -42,9 +36,12 @@ public class PhysicsMovement : MonoBehaviour
         this.transform.localScale = scale;
     }
 
+    /// <summary>
+    /// Day3：rb.velocity 位移方法，通过修改刚体速度让物理引擎进行位移
+    /// </summary>
     private void Move()
     {
-        Vector3 input = new Vector3(Input.GetAxis("Horizontal") * _speed, _rigidbody.velocity.y, 0);
+        Vector2 input = new Vector2(Input.GetAxis("Horizontal") * _speed, _rigidbody.velocity.y);
         _rigidbody.velocity = input;
     }
 
@@ -74,8 +71,16 @@ public class PhysicsMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Day4：2D 物理系统，碰撞体部分（刚体撞上碰撞体）
+    /// </summary>
+    /// <param name="other"></param>
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log(other.gameObject.name);
+        // 使用 CompareTag 进行比较而不是 other.tag == "Ground"
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            Debug.Log(other.gameObject.name);
+        }
     }
 }
