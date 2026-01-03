@@ -7,6 +7,7 @@ public class PhysicsMovement : MonoBehaviour
     [SerializeField] private float _fallMultiplier = 2.5f;
     [SerializeField] private float _lowJumpMultiplier = 12f;
     [SerializeField] private Rigidbody2D _rigidbody;
+    [SerializeField] private Transform _body;
 
     private Direction _direction = Direction.Left;
 
@@ -31,9 +32,9 @@ public class PhysicsMovement : MonoBehaviour
         if (_rigidbody.velocity.x < -0.1f) _direction = Direction.Left;
         else if (_rigidbody.velocity.x > 0.1f) _direction = Direction.Right;
 
-        Vector3 scale = transform.localScale;
+        Vector3 scale = _body.localScale;
         scale.x = Mathf.Abs(scale.x) * (int)_direction;
-        this.transform.localScale = scale;
+        this._body.localScale = scale;
     }
 
     /// <summary>
